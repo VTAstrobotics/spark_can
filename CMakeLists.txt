@@ -69,3 +69,32 @@ install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/sparkcanConfigVersion.cmake"
     DESTINATION lib/cmake/sparkcan
 )
+
+include(InstallRequiredSystemLibraries)
+
+# Set the license file (adjust the name or remove if not applicable)
+# set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+
+# Set package metadata.
+set(CPACK_PACKAGE_NAME "sparkcan")
+set(CPACK_PACKAGE_VENDOR "ASTRO @ VT")
+set(CPACK_PACKAGE_CONTACT "cameronw23@vt.edu")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "FORK of Sparkcan C++ library")
+set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
+
+# Set the maintainer field for the DEB package.
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Cameron") 
+
+# Specify Debian package specifics.
+set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")  # Or "all", "i386", etc.
+set(CPACK_DEBIAN_PACKAGE_SECTION "libs")
+set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+
+# Optionally, specify dependencies the package might need:
+# set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.27)")
+
+# Include CPack to generate the package targets.
+include(CPack)
